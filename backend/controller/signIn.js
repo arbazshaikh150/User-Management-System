@@ -34,6 +34,19 @@ async function signIn(req , res , next){
                 message : "Password Doesn't Match"
             })
         }
+
+        // Setting the token
+        const token = user.jwtToken();
+        user.password = undefined;
+
+        const cookieoption = {
+            /// in millisecond
+            maxAge : 24 * 60 * 60 * 1000, 
+            httponly : true, /// cient side se access nhi ho sakti
+        }
+
+        // Saving it in our cookie
+        res.cookie('token' , token , cookieoption);
         
         // Everything is fine now 
         // Redirecting it to the main profile page

@@ -41,6 +41,18 @@ async function signUp(req , res , next){
         const userInfo = User(req.body);
         const result = await userInfo.save();
 
+        // const token = user.jwtToken();
+        // user.password = undefined;
+
+        // const cookieoption = {
+        //     /// in millisecond
+        //     maxAge : 24 * 60 * 60 * 1000, 
+        //     httponly : true, /// cient side se access nhi ho sakti
+        // }
+
+        // // Saving it in our cookie
+        // res.cookie('token' , token , cookieoption);
+
         return res.status(200).json({
             success : true ,
             message : "User Created and Stored SuccessFully"

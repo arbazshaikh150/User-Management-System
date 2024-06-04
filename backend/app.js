@@ -7,7 +7,7 @@ const customRoutes = require('./routes/customRoutes.js')
 
 // Instance of express
 const app = express();
-
+const FRONTEND_URL = "http://localhost:5173"
 // For stringify
 // Normal middlewares
 app.use(express.json());
@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended : true}));
 app.use(cors({
-    origin : [process.env.FRONTEND_URL],
+    origin : [FRONTEND_URL],
     credentials : true
 }));
 

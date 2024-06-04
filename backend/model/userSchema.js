@@ -2,6 +2,8 @@
 
 const { Schema, model } = require("mongoose");
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const SECRET = 'SECRET'
 
 const userSchema = new Schema({
     name : {
@@ -53,7 +55,20 @@ userSchema.pre('save' , async function (next){
 });
 
 // Can use custom predefined methods
-
+userSchema.methods = ({
+    // In form of key and value
+    jwtToken : async function (next){
+        return jwt.sign({
+            // this -> database
+            id : this._id,
+            email : this.email,
+            username : this.username
+        },
+        process.env.SECRET || SECRET,
+        {expiresIn : "24h"}
+    )
+    }
+})
 
 // Creating the model
 const User = model("user-info" , userSchema);
