@@ -44,7 +44,7 @@ function SignUp(){
             })
             if(response.data.success){
                 toast.success("User Registered SuccessFully");
-                navigate("/signup");
+                navigate("/signin");
             }
 
             
@@ -60,32 +60,32 @@ function SignUp(){
                 <h1 className="font-semibold text-xl cursor-pointer hover:text-2xl transiton-all ease-in-out duration-700"> Instagram SignUp </h1>
                 <label htmlFor="me" className="text-md cursor-pointer w-full font-medium">
                     Name : 
-                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="text" name="me" id="me" placeholder="Name"
+                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="text" name="me" id="me" placeholder="Name" value={credentails.name}
                     onChange={(e) => setCredentaial({...credentails , name : e.target.value})} 
                     
                     required/>
                 </label>
                 <label htmlFor="userName" className="text-md cursor-pointer w-full font-medium">
                     Username : 
-                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded"  type="text" name="userName" id="userName" placeholder="Name" 
+                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded"  type="text" name="userName" id="userName" placeholder="Name" value={credentails.username}
                     onChange={(e) => setCredentaial({...credentails , username : e.target.value})} 
                     required/>
                 </label>
                 <label htmlFor="email" className="text-md cursor-pointer w-full font-medium">
                     Email :
-                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="email" name="email" id="email" placeholder="Email" 
+                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="email" name="email" value={credentails.email} id="email" placeholder="Email" 
                     onChange={(e) => setCredentaial({...credentails , email : e.target.value})} 
                     required />
                 </label>
                 <label htmlFor="password" className="text-md cursor-pointer w-full font-medium">
                     Password : 
-                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="password" name="password" id="password" placeholder="Password" 
+                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="password" name="password" id="password" placeholder="Password" value={credentails.password}
                     onChange={(e) => setCredentaial({...credentails , password : e.target.value})} 
                     required />
                 </label>
                 <label htmlFor="bio" className="text-md cursor-pointer w-full font-medium">
                     Bio : <br />
-                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="text" name="bio" id="bio" placeholder="Enter Bio" 
+                    <input className="bg-white shadow-[0_0_1px_black] w-full py-1 px-2 rounded" type="text" name="bio" id="bio" placeholder="Enter Bio" value={credentails.bio}
                     onChange={(e) => setCredentaial({...credentails , bio : e.target.value})} 
                     required />
                 </label>

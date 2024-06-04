@@ -6,10 +6,9 @@ const jwtauth = (req , res , next) => {
     if(!token){
         return res.status(400).json({
             success : false,
-            message : "User does not exist",
+            message : "Authentication Error",
         })
     }
-
     try{
         const payload = jwt.verify(token , process.env.SECRET || SECRET);
             // Making another entry in the request part
@@ -18,15 +17,16 @@ const jwtauth = (req , res , next) => {
                 email : payload.email,
                 username : payload.username
             }
-
+            return next();
     }
     catch(e){
         return res.status(400).json({
             success : false,
-            message : e.message
+            message : `Kuch toh hua h : ${e.message}`
         })
     }
     // Linked list op
-    next();
+    return next();
 }
 module.exports = jwtauth;
+

@@ -11,7 +11,7 @@ function Profile(){
     // URL = URL + location.pathname;
 
     // Hamare pass username , email , bio hi aayega
-    const [credentails , setCredentaial] = useState(false)
+    const [credentails , setCredentaial] = useState({})
 
     useEffect(() => {
         getUser();
@@ -33,8 +33,9 @@ function Profile(){
             }
         }
         catch(e){
-            navigate('/signin');
+            console.log("Credentials --> " , credentails);
             console.log("SignIn Error" , e);
+            navigate('/signin');
         }
 
     }
@@ -62,11 +63,11 @@ function Profile(){
 
 
     return (
-        <div>
-            <img src="" alt="Image" />
-            <h1>{credentails.username}</h1>
-            <h1>{credentails.email}</h1>
-            <p>{credentails.bio}</p>
+        <div className="h-[100vh] flex flex-col gap-5 justify-center items-center">
+            <img className="w-[30vh] rounded-lg " src="https://i.ibb.co/y5tB0j5/Arbaz-shaikh.jpg" alt="Image" />
+            <h1 className="font-bold text-black text-lg tracking-wider">{credentails.username}</h1>
+            <h1 className="font-bold text-black text-lg tracking-wider">{credentails.email}</h1>
+            <p className="font-semibold text-black text-lg tracking-wider">{credentails.bio}</p>
         </div>
 
     )

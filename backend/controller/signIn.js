@@ -35,18 +35,16 @@ async function signIn(req , res , next){
             })
         }
 
-        // Setting the token
+        // Create jwt token using userSchema method( jwtToken() )
         const token = user.jwtToken();
         user.password = undefined;
 
-        const cookieoption = {
-            /// in millisecond
-            maxAge : 24 * 60 * 60 * 1000, 
-            httponly : true, /// cient side se access nhi ho sakti
-        }
+        const cookieOption = {
+        maxAge: 24 * 60 * 60 * 1000, //24hr
+        httpOnly: true //  not able to modify  the cookie in client side
+        };
 
-        // Saving it in our cookie
-        res.cookie('token' , token , cookieoption);
+        res.cookie("token", token, cookieOption);
         
         // Everything is fine now 
         // Redirecting it to the main profile page

@@ -57,7 +57,7 @@ userSchema.pre('save' , async function (next){
 // Can use custom predefined methods
 userSchema.methods = ({
     // In form of key and value
-    jwtToken : async function (next){
+    jwtToken(){
         return jwt.sign({
             // this -> database
             id : this._id,
